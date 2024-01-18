@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "WzTcOI2WmVD2ERTfUv3WZB51avLv66RBLvcaso92kJ95eS1iBewJIgUU5+d0pyuOM/3bdCxQLhNbQ38Xlc95GQ==",
+  "dgSpecHash": "nO07F8Rydq5FtnkW45un+dNPXW0dm3SgVjjQFuU+tD2eQJxnUf9NBRTwD3b+KMqUIOyvLWPMU9qdp1vchTnWIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Blazor\\BlazorApp1\\BlazorApp1\\BlazorApp1.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Blazor\\blazortask2\\BlazorApp1\\BlazorApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\bootstrap\\5.3.2\\bootstrap.5.3.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

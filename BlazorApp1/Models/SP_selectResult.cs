@@ -11,5 +11,8 @@ namespace BlazorApp1.Models
         public string name { get; set; }
         public int age { get; set; }
         public string address { get; set; }
+        public bool isactive { get; set; }
+        public string skills { get; set; }
+        public string Email { get; set; }
     }
 }

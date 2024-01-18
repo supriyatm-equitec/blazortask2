@@ -12,6 +12,13 @@ namespace BlazorApp1.Models
 {
     public partial interface IEmpdbContextProcedures
     {
+        Task<List<EmpViewByIdResult>> EmpViewByIdAsync(int? id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<GetSkillsempResult>> GetSkillsempAsync(int? Empid, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<int> RetriveAsync(int? id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<int> SP_DeleteRecordAsync(int? Id, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<int> Sp_InsertAsync(string name, int? age, string address, string skills, string email, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<SP_selectResult>> SP_selectAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<sp_skillsResult>> sp_skillsAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<int> Sp_UpdateAsync(int? id, string name, int? age, string address, string skills, string email, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
     }
 }

@@ -15,6 +15,8 @@ public partial class EmpdbContext : DbContext
 
     public virtual DbSet<Emptbl> Emptbls { get; set; }
 
+    public virtual DbSet<Skill> Skills { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Emptbl>(entity =>
@@ -25,13 +27,57 @@ public partial class EmpdbContext : DbContext
             entity.Property(e => e.Address)
                 .IsRequired()
                 .HasMaxLength(100)
-                .IsFixedLength()
+                .IsUnicode(false)
                 .HasColumnName("address");
             entity.Property(e => e.Age).HasColumnName("age");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Isactive).HasColumnName("isactive");
             entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(100)
+                .IsUnicode(false)
                 .HasColumnName("name");
+            entity.Property(e => e.Skills)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("skills");
+        });
+
+        modelBuilder.Entity<Skill>(entity =>
+        {
+            entity.HasKey(e => e.SkillId).HasName("PK__Skill__FBBA8379778430C4");
+
+            entity.ToTable("Skill");
+
+            entity.Property(e => e.SkillId)
+                .ValueGeneratedNever()
+                .HasColumnName("skill_id");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("name");
+
+            entity.HasMany(d => d.Emps).WithMany(p => p.SkillsNavigation)
+                .UsingEntity<Dictionary<string, object>>(
+                    "Emptbl3",
+                    r => r.HasOne<Emptbl>().WithMany()
+                        .HasForeignKey("EmpId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_emptbl3_emp_id"),
+                    l => l.HasOne<Skill>().WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_emptbl3_skill_id"),
+                    j =>
+                    {
+                        j.HasKey("SkillId", "EmpId");
+                        j.ToTable("emptbl3");
+                        j.IndexerProperty<int>("SkillId").HasColumnName("skill_id");
+                        j.IndexerProperty<int>("EmpId").HasColumnName("emp_id");
+                    });
         });
 
         OnModelCreatingGeneratedProcedures(modelBuilder);

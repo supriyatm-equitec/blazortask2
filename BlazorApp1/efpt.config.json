@@ -20,7 +20,43 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[emptbl3]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Skill]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmpViewById]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetSkillsemp]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Retrive]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[SP_DeleteRecord]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Sp_Insert]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[SP_select]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[sp_skills]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Sp_Update]",
          "ObjectType": 1
       }
    ],

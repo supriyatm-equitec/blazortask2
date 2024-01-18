@@ -4,49 +4,70 @@
 
 @using BlazorApp1.Data
 @using BlazorApp1.Models
-
+@inject NavigationManager NavigationManager
 <h1>Employee List</h1>
-
+@inject IJSRuntime JSRuntime
 
 
 @inject Empservice Empservice
 
-@if (forecasts == null)
+
+
+@* @if (forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
 else
-{
+{ *@
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Address</th>
-             
+                <th>Skills</th>
+                <th>Email</th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.name</td>
-                    <td>@forecast.age</td>
-                    <td>@forecast.address</td>
-              
-                </tr>
-            }
+       @foreach (var emp in Emplist)
+        {
+            <tr>
+                <td>@emp.name</td>
+                <td>@emp.age</td>
+                <td>@emp.address</td>
+                <td>@SkillsDictionary[emp.id]</td>
+                <td>@emp.Email</td>
+                <td class="center-text">
+<button class="btn btn-danger" @onclick="() => DeleteEmployeeAsync(emp.id)">Delete</button>
+ <button class="btn btn-primary" @onclick="() => Displayemp(emp.id)">Details</button>
+<button class="btn btn-primary" @onclick="() => UpdateEmployeeAsync(emp.id)">Update</button>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
-}
+<button @onclick="NavigateToAddEmployee">Add Employee</button>
 
-
-@code {
-    private List<SP_selectResult>? forecasts;
-
-    protected override async Task OnInitializedAsync()
+@code{
+    private async Task DeleteEmployeeAsync(int employeeId)
     {
-        forecasts = await Empservice.SP_selectAsync();
+        try
+        {
+            await Empservice.DeleteEmployeeAsync(employeeId);
+            await JSRuntime.InvokeVoidAsync("location.reload");
+  }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            
+        }
     }
+    private Emptbl newEmployee1 = new Emptbl();
 
+    private async Task UpdateEmployeeAsync(int id, string name, int age, string address)
+    {
+        await Empservice.UpdateEmployeeAsync(newEmployee1);
+    }
 }

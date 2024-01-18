@@ -14,4 +14,12 @@ public partial class Emptbl
     public int Age { get; set; }
 
     public string Address { get; set; }
+
+    public bool Isactive { get; set; }
+
+    public string Skills { get; set; }
+
+    public string Email { get; set; }
+
+    public virtual ICollection<Skill> SkillsNavigation { get; set; } = new List<Skill>();
 }

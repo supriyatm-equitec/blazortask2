@@ -1,0 +1,45 @@
+﻿@page "/ShowEmp"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject NavigationManager NavigationManager
+<h1>Employee List</h1>
+@inject IJSRuntime JSRuntime
+@inject Empservice Empservice
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Skills</th>
+            <th>Email</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var emp in forecasts)
+        {
+            <tr>
+                <td>@emp.name</td>
+                <td>@emp.age</td>
+                <td>@emp.address</td>
+                <td>@emp.skills</td>
+                <td>@emp.Email</td>
+                <td class="center-text">
+                    <button class="btn btn-primary" @onclick="() => Displayemp(emp.id)">Details</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+
+
+

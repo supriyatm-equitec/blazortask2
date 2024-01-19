@@ -12,5 +12,7 @@ namespace BlazorApp1.Pages
         {
             emp = await Empservice.GetDetailsIdAsync(Id);
         }
+
+      
     }
 }

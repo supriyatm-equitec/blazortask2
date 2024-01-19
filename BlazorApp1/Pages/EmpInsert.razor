@@ -1,6 +1,6 @@
 ﻿@page "/EmpInsert"
-<h3>EmpInsert</h3>
-<h1>Insertdata</h1>
+
+<h1>Insert Data</h1>
 @using BlazorApp1.Data
 @using BlazorApp1.Models
 @inject Empservice Empservice
@@ -40,9 +40,13 @@
         <InputText class="form-control" id="address" @bind-Value="newEmployee.Email" placeholder="Enter your address" />
 @*         <ValidationMessage For="@(() => newEmployee.Address)" />
  *@    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Add Employee</button>
-    </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Add Employee</button>
+        </div>
+    
+
+    
 </EditForm>
 <hr />
 

@@ -1,0 +1,23 @@
+﻿@page "/Details/{id:int}"
+
+<h3>Details</h3>
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject NavigationManager NavigationManager
+@inject Empservice Empservice
+<h3>Employee Details</h3>
+@if (emp != null)
+{
+    <p>Employee ID: @emp.Id</p>
+    <p>Employee Name: @emp.Name</p>
+    <p>Employee Address: @emp.Address</p>
+    <p>Employee Skills: @emp.Skills</p>
+    <p>Employee Email: @emp.Email</p>
+}
+else
+{
+    <p>No employee details found.</p>
+}
+<div>
+    <button @onclick="CancelClick" type="submit" class="btn btn-Success">Cancel</button>
+</div>

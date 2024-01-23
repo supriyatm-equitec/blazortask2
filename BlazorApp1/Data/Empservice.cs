@@ -16,7 +16,40 @@ namespace BlazorApp1.Data
         public async Task<List<SP_selectResult>> SP_selectAsync()
         {
             return await context.Procedures.SP_selectAsync();
+        }  
+        
+        public async Task<List<Emptbl>> SP_selectDeleteUserAsync()
+        {
+            return  context.Emptbls.Where(x => x.Isactive == true).ToList();
         }
+
+        //restore
+        public async Task RetriveAsync(int id)
+        {
+            try
+            {
+                var sToDelete = await context.Emptbls.FindAsync(id);
+
+                if (sToDelete != null)
+                {
+                    await context.Procedures.RetriveAsync(sToDelete.Id);
+                    sToDelete.Isactive = false;
+                    context.Entry(sToDelete).State = EntityState.Modified;
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Employee with ID {id} not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+        }
+
+
 
         //get all data of skillstbl
         public async Task<List<sp_skillsResult>> Getskill()
@@ -36,7 +69,7 @@ namespace BlazorApp1.Data
 
         public async Task<Emptbl> Getempid(int id)
         {
-            Emptbl employee = context.Emptbls.Where(x => x.Id == id).SingleOrDefault();
+            Emptbl employee = context.Emptbls.Where(x => x.Id == id).FirstOrDefault();
             if (employee == null)
             {
                 return null;

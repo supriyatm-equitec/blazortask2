@@ -1,10 +1,11 @@
-﻿@page "/Update"
+﻿@page "/Restore"
 @using BlazorApp1.Data
 @using BlazorApp1.Models
 @inject NavigationManager NavigationManager
-
-@inject IJSRuntime JSRuntime
 @inject Empservice Empservice
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
 @if (forecasts == null)
 {
     <p><em>Loading...</em></p>
@@ -25,31 +26,25 @@ else
                 </tr>
             </thead>
             <tbody>
-                @foreach (var emp in forecasts)
+                @foreach (var forecast in forecasts)
                 {
                     <tr>
-                        <td>@emp.name</td>
-                        <td>@emp.age</td>
-                        <td>@emp.address</td>
-                        <td>@emp.skills</td>
-                        <td>@emp.Email</td>
-                        <td class="center-text">
-                            <button class="btn btn-primary" @onclick="() => UpdateEmployeeAsync(emp.id)">Update</button>
+                        <td>@forecast.Name</td>
+                        <td>@forecast.Age</td>
+                        <td>@forecast.Address</td>
+                        <td>@forecast.Skills</td>
+                        <td>@forecast.Email</td>
+                        <td>
+
+                            <button class="btn btn-danger" @onclick="() => RestoreConfirm(forecast.Id)">Restore</button>
+
+
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-}
-
-@code {
-    private Emptbl newEmployee1 = new Emptbl();
-
-    private async Task UpdateEmployeeAsync(int id, string name, int age, string address)
-    {
-        await Empservice.UpdateEmployeeAsync(newEmployee1);
-    }
 }
 
 

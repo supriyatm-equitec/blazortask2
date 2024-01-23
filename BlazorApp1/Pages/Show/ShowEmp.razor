@@ -2,7 +2,7 @@
 @using BlazorApp1.Data
 @using BlazorApp1.Models
 @inject NavigationManager NavigationManager
-<h1>Employee List</h1>
+
 @inject IJSRuntime JSRuntime
 @inject Empservice Empservice
 @if (forecasts == null)
@@ -11,8 +11,10 @@
 }
 else
 {
-<table class="table">
-    <thead>
+ <h1 class="colorBlue">Employee List</h1>
+    <div class="table_detailsemply">
+        <table class="employee_table loan_table" width="100%">
+            <thead>
         <tr>
             <th>Name</th>
             <th>Age</th>
@@ -38,6 +40,7 @@ else
         }
     </tbody>
 </table>
+</div>
 }
 
 

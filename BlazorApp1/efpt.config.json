@@ -48,6 +48,10 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[sp_restore]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[SP_select]",
          "ObjectType": 1
       },

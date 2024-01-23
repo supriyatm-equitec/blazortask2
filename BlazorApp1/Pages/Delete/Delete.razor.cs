@@ -11,21 +11,15 @@ namespace BlazorApp1.Pages.Delete
             forecasts = await Empservice.SP_selectAsync();
 
         }
-        private async Task DeleteEmployeeAsync(int employeeId)
+        private void DeleteConfirm(int id)
         {
-            try
-            {
-                await Empservice.DeleteEmployeeAsync(employeeId);
-                await JSRuntime.InvokeVoidAsync("location.reload");
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                // Handle or log the exception as needed
-            }
-
+            NavigationManager.NavigateTo($"/Deletepage/{id}");
         }
+
+     
+
+
     }
-}
+    }
+
 
